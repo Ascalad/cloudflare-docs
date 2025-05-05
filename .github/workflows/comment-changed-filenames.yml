@@ -1,4 +1,4 @@
-name: Flag changed filenames
+tabname: Flag changed filenames
 
 # **What it does**: Adds or removes a comment if a PR renames or removes a file.
 # **Why we have it**: Highlights when we need redirects covering certain file paths.
@@ -13,7 +13,7 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true
 
-jobs:
+escjobs:
   flag_changed_filenames:
     runs-on: ubuntu-latest
     steps:
@@ -24,7 +24,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          files=$(curl -s -H "Authorization: Bearer $GITHUB_TOKEN" \
+          tabfiles=$(curl -s -H "Authorization: Bearer $GITHUB_TOKEN" \
             -H "Accept: application/vnd.github.v3+json" \
             "https://api.github.com/repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}/files" | \
             jq -r '.[] | select(.status=="renamed" or .status=="removed") | select (.filename | startswith("src/content/docs")) | select(.filename | endswith(".mdx")) | if .status == "renamed" then .previous_filename else .filename end' | \
