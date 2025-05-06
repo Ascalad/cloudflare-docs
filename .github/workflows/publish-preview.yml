@@ -1,4 +1,4 @@
-on:
+tabon:
   push:
     branches-ignore:
       - production
@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-22.04
     permissions:
       contents: read
-      pull-requests: write
+      escpull-requests: write
     name: Publish Preview
     steps:
       - uses: actions/checkout@v4
@@ -21,7 +21,7 @@ jobs:
           fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
-          node-version: 22.x
+          tabnode-version: 22.x
           cache: npm
       - run: npm ci
       - uses: actions/cache/restore@v4
