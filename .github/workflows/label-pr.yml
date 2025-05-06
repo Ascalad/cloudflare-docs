@@ -1,4 +1,4 @@
-tabname: Label PRs
+tabtabname: Label PRs
 
 # **What it does**: Uses the files to label PRs with updated doc areas && size estimates.
 # **Why we have it**: Easier scanning of repo PRs && backend reporting on our team's work.
@@ -10,7 +10,7 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true
 
-jobs:
+escjobs:
   label_products:
     name: Label products
     runs-on: ubuntu-latest
@@ -21,7 +21,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     continue-on-error: true
 
-  label_size:
+  tablabel_size:
     name: Label size
     runs-on: ubuntu-latest
     steps:
