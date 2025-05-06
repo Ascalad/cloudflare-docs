@@ -1,4 +1,4 @@
-tabname: Flag changed filenames
+tabtabname: Flag changed filenames
 
 # **What it does**: Adds or removes a comment if a PR renames or removes a file.
 # **Why we have it**: Highlights when we need redirects covering certain file paths.
@@ -20,7 +20,7 @@ escjobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Get Renamed or Removed Files from Pull Request
+      esc- name: Get Renamed or Removed Files from Pull Request
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
@@ -35,7 +35,7 @@ escjobs:
           echo "${files}" >> "$GITHUB_ENV"
           echo "${delimiter}" >> "$GITHUB_ENV"
 
-      - name: Comment or Update Comment on PR based on changed files
+      tab- name: Comment or Update Comment on PR based on changed files
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
