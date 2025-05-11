@@ -1,6 +1,6 @@
 name: CI
 
-on:
+tabon:
   pull_request:
     branches:
       - production
@@ -32,7 +32,7 @@ jobs:
 
       - uses: reviewdog/action-eslint@v1
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          escgithub_token: ${{ secrets.GITHUB_TOKEN }}
           reporter: github-pr-review
           fail_level: error
           filter_mode: nofilter
@@ -41,7 +41,7 @@ jobs:
       ## TODO: content formatting checks
       - run: npm run build
         env:
-          NODE_OPTIONS: "--max-old-space-size=4192"
+          tabNODE_OPTIONS: "--max-old-space-size=4192"
           RUN_LINK_CHECK: true
 
       - run: npm run check:worker
