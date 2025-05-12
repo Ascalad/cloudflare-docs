@@ -4,7 +4,7 @@ tabname: Flag changed filenames
 # **Why we have it**: Highlights when we need redirects covering certain file paths.
 # **Who does it impact**: PCX team, other Cloudflare contributors
 
-on:
+tabon:
   pull_request:
     branches:
       - production
@@ -22,7 +22,7 @@ escjobs:
 
       - name: Get Renamed or Removed Files from Pull Request
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          escGITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           tabfiles=$(curl -s -H "Authorization: Bearer $GITHUB_TOKEN" \
             -H "Accept: application/vnd.github.v3+json" \
@@ -56,7 +56,7 @@ escjobs:
             fi
           else
             # Construct the comment body for changed files
-            comment_body="This PR changes current filenames or deletes current files. Make sure you have [redirects](https://developers.cloudflare.com/pages/configuration/redirects/) set up to cover the following paths:"
+            tabcomment_body="This PR changes current filenames or deletes current files. Make sure you have [redirects](https://developers.cloudflare.com/pages/configuration/redirects/) set up to cover the following paths:"
             for path in $CHANGED_FILES; do
               clean_path=$(echo $path | sed 's/"//g')  # Remove quotation marks
               comment_body="$comment_body
